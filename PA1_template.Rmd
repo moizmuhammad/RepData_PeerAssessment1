@@ -2,8 +2,18 @@
 
 
 ## Loading and preprocessing the data
-
-
+The data in activity.csv file is loaded into r data frame. 
+```{r, echo=TRUE}
+   #load the data from file 'activity.csv'
+   activity <- read.csv('activity.csv')
+```
+Rows with no measurements are then removed.
+```{r, echo=TRUE}
+   #remove the rows with no measurements i.e. NA
+   activity.clean <- na.omit(activity)
+   
+```
+Out of total `r dim(activity)[1]` rows in the data file, `r dim(activity.clean)[1]` rows were found to be complete (i.e. having some value other than NA).
 
 ## What is mean total number of steps taken per day?
 
