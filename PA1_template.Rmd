@@ -40,7 +40,21 @@ Median steps taken per day are
 
 ## What is the average daily activity pattern?
 
+Average steps taken within each time interval (across all days)
+```{r,echo=TRUE}
+    activity.time <- aggregate(steps~interval,activity.clean,mean)
+```
 
+Time series plot
+```{r,echo=TRUE}
+   plot(x=activity.time$interval,y=activity.time$steps,type = 'l',xlab = 'Time Interval',ylab = 'Average Number of Steps')
+```
+
+Time interval for which maximum steps are taken
+```{r,echo=TRUE}
+   activity.max <- activity.time[activity.time$steps==max(activity.time$steps),]
+   activity.max
+```
 
 ## Imputing missing values
 
