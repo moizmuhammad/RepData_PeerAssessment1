@@ -17,6 +17,25 @@ Out of total `r dim(activity)[1]` rows in the data file, `r dim(activity.clean)[
 
 ## What is mean total number of steps taken per day?
 
+Total number of steps taken per day is calculated as follows
+```{r, echo=TRUE}
+   activity.daily <- aggregate(steps~date,activity,sum)
+```
+
+Histogram of total steps taken per day
+```{r, echo=TRUE}
+   hist(activity.daily$steps,xlab = 'Total Steps per Day',main = 'Histogram of Total Steps per Day')
+```
+
+Mean steps taken per day are 
+```{r, echo=TRUE}
+   mean(activity.daily$steps)
+```
+
+Median steps taken per day are 
+```{r, echo=TRUE}
+   median(activity.daily$steps)
+```
 
 
 ## What is the average daily activity pattern?
