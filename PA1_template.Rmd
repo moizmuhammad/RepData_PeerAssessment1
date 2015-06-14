@@ -58,6 +58,41 @@ Time interval for which maximum steps are taken
 
 ## Imputing missing values
 
+Total number of missing values (i.e. rows with NA) are
+```{r,echo=TRUE}
+   dim(activity)[1] - dim(activity.clean)[1]
+```
 
+Impute missing values using the interval average steps
+```{r,echo=TRUE}
+   activity.imputed <- activity
+   activity.imputed <- transform(activity.imputed, 
+                                 steps=ifelse(is.na(steps),
+                                              activity.time[activity.time$interval %in% interval,'steps'],
+                                              steps))
+
+```
+
+Total number of steps taken per day is calculated as follows
+```{r, echo=TRUE}
+   activity.imputed.daily <- aggregate(steps~date,activity.imputed,sum)
+```
+
+Histogram of total steps taken per day
+```{r, echo=TRUE}
+   hist(activity.imputed.daily$steps,xlab = 'Total Steps per Day',main = 'Histogram of Total Steps per Day')
+```
+
+Mean steps taken per day are 
+```{r, echo=TRUE}
+   mean(activity.imputed.daily$steps)
+```
+
+Median steps taken per day are 
+```{r, echo=TRUE}
+   median(activity.imputed.daily$steps)
+```
+
+With imputation, median has converged to mean i.e. mean and median are now same.
 
 ## Are there differences in activity patterns between weekdays and weekends?
