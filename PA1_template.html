@@ -122,9 +122,12 @@ img {
 <p>Median steps taken per day are</p>
 <pre class="r"><code>   median(activity.imputed.daily$steps)</code></pre>
 <pre><code>## [1] 10766.19</code></pre>
+<p>With imputation, median has converged to mean i.e. mean and median are now same.</p>
 </div>
 <div id="are-there-differences-in-activity-patterns-between-weekdays-and-weekends" class="section level2">
 <h2>Are there differences in activity patterns between weekdays and weekends?</h2>
+<p>Add new factor variable for identification of weekday and weekend</p>
+<pre class="r"><code>   #activity.imputed$daytype &lt;- ifelse(weekdays(activity.imputed$date) %in% )</code></pre>
 </div>
 </div>
 
