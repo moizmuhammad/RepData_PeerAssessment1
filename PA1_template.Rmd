@@ -96,3 +96,11 @@ Median steps taken per day are
 With imputation, median has converged to mean i.e. mean and median are now same.
 
 ## Are there differences in activity patterns between weekdays and weekends?
+
+Add new factor variable for identification of weekday and weekend
+```{r,echo=TRUE}
+   #activity.imputed$daytype <- ifelse(weekdays(activity.imputed$date) %in% )
+
+```
+ 
+
