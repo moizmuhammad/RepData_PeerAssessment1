@@ -98,9 +98,15 @@ With imputation, median has converged to mean i.e. mean and median are now same.
 ## Are there differences in activity patterns between weekdays and weekends?
 
 Add new factor variable for identification of weekday and weekend
-```{r,echo=TRUE}
-   #activity.imputed$daytype <- ifelse(weekdays(activity.imputed$date) %in% )
+```{r,echo=TRUE}   
+   activity.imputed$day <- weekdays(as.Date(activity.imputed$date),abbreviate = T)
+   activity.imputed$daytype <- ifelse(activity.imputed$day %in% c('Sat','Sun'),'weekend','weekday')
+   activity.imputed$daytype <- as.factor(activity.imputed$daytype)
+   activity.imputed.pattern <- aggregate(steps ~ daytype * interval, activity.imputed, mean)
 
+   
+   library(ggplot2)
+   qplot(interval,steps, data = activity.imputed.pattern, facets = daytype~., geom='path')
 ```
  
 
